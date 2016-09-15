@@ -1,38 +1,34 @@
-window.addEventListener("load", function() {
-    var boton = document.getElementById("iniciar");
-    boton.addEventListener("click", function() {
-        var name = document.getElementById("name").value;
-        var lastname = document.getElementById("lastname").value;
-        var email = document.getElementById("input-email").value;
-        var password = document.getElementById("input-password").value;
-        var menu = document.querySelector("select").value;
-        validateForm(name,lastname,email,password,menu); 
-    });
-    function validateForm(name,lastname,email,password,menu){
-        /* Escribe tú código aquí */
-             var expreg = /^[az]$/;
-            if (name == ""){
-                alert("llenar el campo nombre por favor");
-            } else if(name === expreg){
-               alert(" Es correcta");
-             } else alert("incorrecto !!!");
-            if (lastname == ""){
-                alert("llenar el campo apellido por favor");
-            }
-            if (email == ""){
-                alert("llenar el campo correo por favor");
-            }
-            if (password == "") {
-                alert("llenar el campo contraseña por favor");
-            }
-            if (menu == 0) {
-                alert("selecciona un tipo de bici por favor");
-            }
-            if (password.length < 6){ 
-                window.alert("Ingrese  al menos 6 caracteres"); 
-             } 
-            if (password == "123456" || password == "password" || password == "098754"){
-                alert ("ingresa contraseña valida");
-            }      
-    }       
-});
+function validateForm(){
+		/* Escribe tú código aquí */
+	var name = document.getElementById("name").value;
+	if (name == ""){
+		alert("Ingresa tu nombre por favor.");
+	} else if (/^[a-z]/.test(name.charAt(0))){
+		alert("Por favor ingrese la primera letra en mayúscula.");
+	} else if (/^[0-9]/.test(name.charAt(0))){
+		alert("Por favor no ingrese números.");
+	}
+	var lastname = document.getElementById("lastname").value;
+	if (lastname == ""){
+		alert("Ingresa tu apellido por favor.");
+	}
+	var correovalidado=/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+	var email = document.getElementById("input-email").value;
+	if (email == "" ){
+		alert("Ingresa tu correo por favor.");
+	} else if(!correovalidado.test(email)) {
+        alert("Ingrese un correo válido por favor.");
+    }
+	var password = document.getElementById("input-password").value;
+	if (password == "") {
+		alert("Ingresa una contraseña por favor.");
+	} else if (password.length < 6){ 
+     	alert("Ingrese  al menos 6 caracteres."); 
+    } else if (password == "123456" || password == "password" || password == "098754"){
+    	alert("Ingrese una contraseña válida por favor.");
+    }
+    var menu = document.querySelector("select").value;
+	if (menu == 0) {
+		alert("Seleccione un tipo de bici por favor");
+	}      
+}
